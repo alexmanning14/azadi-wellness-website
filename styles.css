@@ -198,29 +198,26 @@ h2 {
 
 .hero-media { position: absolute; inset: 0; }
 .hero-media img {
+  object-position: 50% 15%;
   transform: scale(calc(1.14 - var(--p) * 0.14));
   will-change: transform;
 }
+.has-media > .glow { display: none; }
+/* The hero photo is dark, so the copy and nav over it read in cream */
 .hero-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(74, 59, 53, 0.38), rgba(74, 59, 53, 0.22) 40%, rgba(74, 59, 53, 0.4));
+  /* Dusk tint: darkens the pale sky so the cream copy holds */
+  background: linear-gradient(rgba(52, 38, 58, 0.5), rgba(52, 38, 58, 0.4) 55%, rgba(52, 38, 58, 0.5));
 }
-.has-media > .glow { display: none; }
 .has-media .hero-title,
 .has-media .hero-eyebrow,
 .has-media .scroll-hint { color: var(--cream); }
-.has-media .hero-title { text-shadow: 0 2px 2.5rem rgba(74, 59, 53, 0.45); }
-/* Over a hero photo the nav reads in cream until it turns to glass */
+.has-media .hero-title { text-shadow: 0 2px 2.5rem rgba(40, 30, 26, 0.55); }
+.has-media .hero-eyebrow { text-shadow: 0 1px 1rem rgba(40, 30, 26, 0.6); }
 .nav.on-media:not(.solid) nav a { color: var(--cream); }
 .nav.on-media:not(.solid) .nav-logo img { filter: brightness(0) invert(0.96) sepia(0.12); }
-
-.statement-media { position: absolute; inset: -8% 0; opacity: 0.32; }
-.statement-media img {
-  transform: translateY(calc((var(--p) - 0.5) * -7%));
-  will-change: transform;
-}
 
 .about-photo {
   width: min(100%, 22rem);
