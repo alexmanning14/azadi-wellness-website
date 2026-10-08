@@ -109,6 +109,30 @@
     stack.classList.toggle('flat', !fits);
   };
 
+  // Her portrait leans very slightly toward the cursor.
+  const portrait = document.querySelector('.about-photo');
+  if (portrait && matchMedia('(hover: hover)').matches) {
+    const set = (rx, ry, px, py) => {
+      const st = portrait.style;
+      st.setProperty('--rx', `${rx}deg`); st.setProperty('--ry', `${ry}deg`);
+      st.setProperty('--px', `${px}%`); st.setProperty('--py', `${py}%`);
+    };
+    portrait.addEventListener('pointermove', (e) => {
+      const r = portrait.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      set(-y * 3, x * 3, -x * 1, -y * 1);
+    });
+    portrait.addEventListener('pointerleave', () => set(0, 0, 0, 0));
+  }
+
+  // The four small images drift against each other as their section crosses the screen.
+  const drift = document.querySelector('[data-drift]');
+  const paintDrift = () => {
+    const r = drift.getBoundingClientRect();
+    drift.style.setProperty('--p', clamp((innerHeight - r.top) / (innerHeight + r.height)).toFixed(4));
+  };
+
   let ticking = false;
   const frame = () => {
     let moving = false;
@@ -126,6 +150,7 @@
     measure();
     updateNav();
     paintCards();
+    paintDrift();
     if (!ticking) { ticking = true; requestAnimationFrame(frame); }
   };
 

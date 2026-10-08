@@ -219,11 +219,28 @@ h2 {
 .nav.on-media:not(.solid) nav a { color: var(--cream); }
 .nav.on-media:not(.solid) .nav-logo img { filter: brightness(0) invert(0.96) sepia(0.12); }
 
+/* Her portrait: a slight lean toward the cursor and a slow, small zoom */
+.about-figure { justify-self: center; width: min(100%, 26rem); }
+.about-figure:empty { display: none; }
 .about-photo {
-  width: min(100%, 22rem);
+  position: relative;
   aspect-ratio: 4 / 5;
-  margin-top: 2.5rem;
-  border-radius: 999px 999px 1.5rem 1.5rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 1.5rem 3rem -1.5rem rgba(74, 59, 53, 0.45);
+  transform: perspective(60rem) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.9s var(--ease), box-shadow 0.6s var(--ease);
+  will-change: transform;
+}
+.about-photo img {
+  transform: scale(1.03) translate(var(--px, 0), var(--py, 0));
+  transition: transform 0.9s var(--ease);
+}
+@media (hover: hover) {
+  .about-photo:hover {
+    box-shadow: 0 1.75rem 3.25rem -1.5rem rgba(74, 59, 53, 0.45);
+    transition-duration: 0.4s, 0.6s;
+  }
+  .about-photo:hover img { transform: scale(1.05) translate(var(--px, 0), var(--py, 0)); transition-duration: 0.6s; }
 }
 
 /* Speckles (the dust and stars from her posts) */
@@ -297,11 +314,13 @@ h2 {
 }
 .about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
-  gap: clamp(2rem, 6vw, 6rem);
-  max-width: 72rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  max-width: 66rem;
   margin: 0 auto;
 }
+.about-copy h2 { margin-bottom: 1.75rem; }
 .about-grid p:not(.eyebrow) + p { margin-top: 1.25em; }
 .about-welcome { font-style: italic; font-size: 1.3em; color: var(--accent); }
 .text-link {
@@ -319,7 +338,7 @@ h2 {
 /* Offerings: cards pin and stack over one another */
 .offerings {
   background: linear-gradient(var(--cream), var(--sand) 18rem);
-  padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(9rem, 22vw, 17rem);
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(4rem, 10vw, 7rem);
 }
 .offerings-head { max-width: 72rem; margin: 0 auto clamp(2.5rem, 6vw, 4.5rem); }
 
@@ -401,6 +420,53 @@ h2 {
 .stack.flat .card { position: static; margin-bottom: 1.25rem; }
 .card .button { align-self: flex-start; margin-top: 1rem; }
 
+/* Essence: a short statement with four small images that drift at different rates */
+.essence {
+  background: var(--sand);
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) clamp(10rem, 24vw, 18rem);
+}
+.essence-copy {
+  max-width: 40rem;
+  margin: 0 auto clamp(3rem, 7vw, 5rem);
+  text-align: center;
+}
+.essence-copy h2 { font-style: italic; margin-bottom: 1.5rem; }
+.essence-grid {
+  --p: 0.5;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.9rem, 2.5vw, 2rem);
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0;
+}
+.essence-grid figure {
+  margin: 0;
+  transform: translateY(calc((var(--p) - 0.5) * var(--drift, -3rem)));
+  will-change: transform;
+}
+.essence-grid li:nth-child(even) figure { --drift: 3rem; margin-top: clamp(1.5rem, 4vw, 3rem); }
+.essence-grid .media {
+  aspect-ratio: 3 / 4;
+  border-radius: clamp(0.9rem, 2vw, 1.5rem);
+  box-shadow: 0 1.25rem 2.5rem -1.5rem rgba(74, 59, 53, 0.4);
+}
+.essence-grid img { transition: transform 1.2s var(--ease); }
+@media (hover: hover) {
+  .essence-grid figure:hover img { transform: scale(1.05); }
+}
+.essence-grid figcaption {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
 /* Buttons */
 .button {
   display: inline-block;
@@ -462,6 +528,10 @@ h2 {
   .card-inner.has-media { padding-top: 8.5rem; }
   .card-inner.has-media > :not(.card-media):not(.card-num) { max-width: none; }
   .has-media > .card-num { font-size: 3rem; }
+}
+
+@media (max-width: 40rem) {
+  .essence-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
 }
 
 @media (max-width: 34rem) {
