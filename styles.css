@@ -315,14 +315,18 @@ h2 {
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-  align-items: center;
+  align-items: start;
   gap: clamp(2.5rem, 7vw, 6rem);
   max-width: 66rem;
   margin: 0 auto;
 }
+/* Beside the long bio, her photo stays in view while the text scrolls */
+@media (min-width: 52rem) {
+  .about-figure { position: sticky; top: 8rem; }
+}
 .about-copy h2 { margin-bottom: 1.75rem; }
 .about-grid p:not(.eyebrow) + p { margin-top: 1.25em; }
-.about-welcome { font-style: italic; font-size: 1.3em; color: var(--accent); }
+.about-signoff { font-style: italic; font-size: 1.3em; color: var(--accent); }
 .text-link {
   font-family: var(--sans);
   font-size: 0.72rem;
@@ -508,6 +512,36 @@ h2 {
   letter-spacing: 0.14em;
   color: var(--sand);
 }
+.footer p { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 1.75rem; }
+.footer-links a { color: inherit; text-decoration: none; transition: color 0.3s; }
+.footer-links a:hover { color: var(--cream); text-decoration: underline; text-underline-offset: 0.3em; }
+.footer-standalone {
+  margin-top: 0;
+  padding-inline: var(--gutter);
+  background: var(--plum);
+  border-top: 0;
+}
+
+/* Legal pages: terms, privacy policy, disclaimer */
+.legal { padding: clamp(8rem, 16vw, 11rem) var(--gutter) clamp(4rem, 10vw, 7rem); }
+.legal article { max-width: 44rem; margin: 0 auto; font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem); }
+.legal h1 { font-weight: 500; font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.08; margin-bottom: 2rem; }
+.legal h2 {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 3rem 0 1rem;
+}
+.legal p + p, .legal ul + p, .legal p + ul { margin-top: 1.1em; }
+.legal ul { margin-bottom: 0; padding-left: 1.3em; }
+.legal li + li { margin-top: 0.5em; }
+.legal a { color: var(--accent); overflow-wrap: anywhere; }
+
 /* Her logo, tinted cream for the dark footer */
 .footer-logo {
   width: 11rem;
