@@ -499,6 +499,20 @@ h2 {
 .button:active { transform: scale(0.97); }
 .tone-ink .button,
 .button.light { background: var(--cream); color: var(--ink); }
+/* Stands in for a card's button while that service is not ready */
+.coming-soon {
+  align-self: flex-start;
+  margin-top: 1rem;
+  padding: 0.95rem 1.8rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
 
 /* Connect + footer */
 .connect {
@@ -642,6 +656,34 @@ h2 {
 .biz-offers .biz-icon { margin: 0 auto 1.1rem; color: var(--taupe); }
 .biz-offers h3 { margin-bottom: 0.6rem; font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
 .biz-offers p { font-size: 0.88em; line-height: 1.6; opacity: 0.85; }
+.biz-offer-cta { display: table; margin: clamp(1.75rem, 4vw, 2.5rem) auto 0; }
+/* A quiet "trusted by" band between hairlines, like a client logo row */
+.biz-clients {
+  display: grid;
+  gap: 1.25rem 3rem;
+  align-items: center;
+  margin-block: clamp(1rem, 3vw, 2rem);
+  padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  border-block: 1px solid var(--line);
+  text-align: center;
+}
+.biz-clients-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); }
+.biz-clients ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+.biz-clients li {
+  padding: 0.25rem clamp(1.5rem, 4vw, 3rem);
+  font-family: var(--serif);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.75;
+}
+.biz-clients li + li { border-left: 1px solid var(--line); }
+@media (min-width: 48rem) {
+  .biz-clients { grid-template-columns: auto 1fr; text-align: left; }
+  .biz-clients ul { justify-content: flex-start; border-left: 1px solid var(--line); }
+}
 .biz-mission { display: flex; flex-direction: column; justify-content: center; background: linear-gradient(160deg, #e7ebe2, #dfe4d9); }
 .biz h2 { font-family: var(--serif); }
 .biz-mission h2 { margin-bottom: 1rem; font-size: clamp(2rem, 3.6vw, 2.6rem); }
@@ -701,6 +743,7 @@ h2 {
 @media (max-width: 48rem) {
   .biz-cta { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .biz-offers li + li { border-left: 0; }
+  .biz-offer-cta { padding-inline: 1.4rem; letter-spacing: 0.14em; white-space: nowrap; }
   .biz-strip .biz-quote { grid-column: 1 / -1; order: 1; aspect-ratio: auto; padding: 2rem 1.5rem; }
   .biz-strip .biz-quote p { max-width: 26ch; }
   .biz-strip > :last-child { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
