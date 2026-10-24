@@ -659,30 +659,25 @@ h2 {
 .biz-offer-cta { display: table; margin: clamp(1.75rem, 4vw, 2.5rem) auto 0; }
 /* A quiet "trusted by" band between hairlines, like a client logo row */
 .biz-clients {
-  display: grid;
-  gap: 1.25rem 3rem;
-  align-items: center;
   margin-block: clamp(1rem, 3vw, 2rem);
-  padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
   border-block: 1px solid var(--line);
   text-align: center;
 }
-.biz-clients-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); }
-.biz-clients ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+.biz-clients-label { margin-bottom: clamp(1.25rem, 3vw, 1.75rem); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); }
+.biz-clients ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem 2rem; }
 .biz-clients li {
-  padding: 0.25rem clamp(1.5rem, 4vw, 3rem);
   font-family: var(--serif);
-  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  line-height: 1.25;
   color: var(--ink);
   opacity: 0.75;
 }
-.biz-clients li + li { border-left: 1px solid var(--line); }
-@media (min-width: 48rem) {
-  .biz-clients { grid-template-columns: auto 1fr; text-align: left; }
-  .biz-clients ul { justify-content: flex-start; border-left: 1px solid var(--line); }
+@media (min-width: 60rem) {
+  .biz-clients ul { display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; gap: 0; }
+  .biz-clients li { padding: 0.2rem 1.25rem; }
+  .biz-clients li + li { border-left: 1px solid var(--line); }
 }
 .biz-mission { display: flex; flex-direction: column; justify-content: center; background: linear-gradient(160deg, #e7ebe2, #dfe4d9); }
 .biz h2 { font-family: var(--serif); }
