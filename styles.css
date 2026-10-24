@@ -671,13 +671,14 @@ h2 {
   font-size: clamp(1.2rem, 1.8vw, 1.45rem);
   font-weight: 600;
   line-height: 1.25;
+  text-wrap: balance;
   color: var(--ink);
   opacity: 0.75;
 }
 @media (min-width: 60rem) {
-  .biz-clients ul { display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; gap: 0; }
+  .biz-clients ul { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; gap: 1.5rem 0; max-width: 54rem; margin-inline: auto; }
   .biz-clients li { padding: 0.2rem 1.25rem; }
-  .biz-clients li + li { border-left: 1px solid var(--line); }
+  .biz-clients li:not(:nth-child(3n + 1)) { border-left: 1px solid var(--line); }
 }
 .biz-mission { display: flex; flex-direction: column; justify-content: center; background: linear-gradient(160deg, #e7ebe2, #dfe4d9); }
 .biz h2 { font-family: var(--serif); }
